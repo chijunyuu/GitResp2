@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EmpMapper">
+<!--     返回单个对象   -->
+<!--    id 相当于方法名 -->
+<!--    resultType 相当于返回值  sql语句的查询结果用哪个类来进行封装 如果返回值类型是集合，
+        这里写的也是集合中的元素对应的类，不是集合本身作为类型-->
+<!--    paramterType 参数类型-->
+<!--    -->
+    <select id="findOne" resultType="emp">
+        select * from emp where empno = 7499
+    </select>
+
+    <select id="findAllEmp" resultType="emp">
+        select * from emp
+    </select>
+</mapper>

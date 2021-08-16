@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EmpMapper2">
+
+<!--  SqlSession 的三种参数传递  -->
+
+
+<!--     返回单个对象   -->
+<!--    id 相当于方法名 -->
+<!--    resultType 相当于返回值  sql语句的查询结果用哪个类来进行封装 如果返回值类型是集合，
+        这里写的也是集合中的元素对应的类，不是集合本身作为类型-->
+<!--    paramterType 参数类型-->
+
+
+
+        <!-- 根据员工工号查询员工的全部信息，返回单个员工的信息
+              在SQL语句上可以使用${} #{}  表示参数的站位-->
+
+       <!-- ${} 代表Mybatis底层使用Statment对象，参数是以字符串拼接的形式设置
+            #{} 代表Mybatis底层使用prepareStatment对象，参数使用？作为占位符
+
+       -->
+        <select id="findByEmpno" resultType="emp" parameterType="int">
+            select * from emp where EMPNO = #{EMPNO}
+        </select>
+
+    <!-- map集合作为参数   -->
+    <select id="findEmpByDeptnoAndSal" resultType="emp" parameterType="map">
+        select *
+        from emp where deptno = #{DEPTNO} and sal &gt;= #{SAL}
+    </select>
+
+    <select id="findEmpByDeptnoAndSal2" resultType="emp" parameterType="emp">
+        select *
+        from emp where deptno = #{DEPTNO} and sal &gt;= #{SAL}
+    </select>
+</mapper>
